@@ -1,6 +1,6 @@
 from flask import Flask, request
 from dotenv import load_dotenv
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import os
 
 from email_sender import EmailSender
@@ -10,7 +10,7 @@ load_dotenv()
 
 FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": ["https://rvjonh-portfolio.netlify.app/",]}})
+cors = CORS(app, resources={r"/*": {"origins": [FRONTEND_DOMAIN,]}})
 print("FRONTEND_DOMAIN: ",FRONTEND_DOMAIN)
 
 """ Email configuration """
@@ -21,6 +21,7 @@ JsonResponder = JsonResponse(app)
 
 """ ROUTES """
 @app.route("/email", methods = ['POST'])
+@cross_origin(origins=[FRONTEND_DOMAIN,])
 def index():
     data = request.get_json()
 
