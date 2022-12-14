@@ -1,8 +1,6 @@
 import os
 from flask_mail import Mail, Message
 
-
-
 class EmailSender():
     """ a wrapper to send emails, from an email """
     

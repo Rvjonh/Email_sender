@@ -8,10 +8,9 @@ from json_responder import JsonResponse
 
 load_dotenv()
 
-FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 app = Flask(__name__)
+FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 cors = CORS(app, resources={r"/*": {"origins": [FRONTEND_DOMAIN,]}})
-print("FRONTEND_DOMAIN: ",FRONTEND_DOMAIN)
 
 """ Email configuration """
 Email_Sender = EmailSender(app)
