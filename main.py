@@ -10,7 +10,7 @@ load_dotenv()
 
 FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 app = Flask(__name__)
-cors = CORS(app, resources={r"/email": {"origins": [FRONTEND_DOMAIN,]}})
+cors = CORS(app, resources={r"/*": {"origins": ["https://rvjonh-portfolio.netlify.app/",]}})
 print("FRONTEND_DOMAIN: ",FRONTEND_DOMAIN)
 
 """ Email configuration """
