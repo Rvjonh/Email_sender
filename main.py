@@ -10,7 +10,8 @@ load_dotenv()
 
 FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 app = Flask(__name__)
-cors = CORS(app, resources={r"/email": {"origins": FRONTEND_DOMAIN}})
+""" cors = CORS(app, resources={r"/email": {"origins": FRONTEND_DOMAIN}}) """
+cors = CORS(app)
 
 
 """ Email configuration """
