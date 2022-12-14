@@ -1,6 +1,6 @@
 from flask import Flask, request
 from dotenv import load_dotenv
-from flask_cors import cross_origin
+from flask_cors import CORS
 import os
 
 from email_sender import EmailSender
@@ -10,6 +10,7 @@ load_dotenv()
 
 FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN')
 app = Flask(__name__)
+cors = CORS(app, resources={r"/email": {"origins": FRONTEND_DOMAIN}})
 
 
 """ Email configuration """
@@ -20,7 +21,6 @@ JsonResponder = JsonResponse(app)
 
 """ ROUTES """
 @app.route("/email", methods = ['POST'])
-@cross_origin(origins=[FRONTEND_DOMAIN])
 def index():
     data = request.get_json()
 
