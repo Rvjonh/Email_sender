@@ -37,4 +37,4 @@ def index():
     return JsonResponder.Response({"Success":"I have received your email"}, status=200)
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(debug = True, port=os.getenv("PORT", default=5000))
